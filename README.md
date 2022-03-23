@@ -2,6 +2,8 @@
 
 This application can calculate any person's BMI using their Weight (in kg) and Height (in cm). In addition to this the application can also provide an information regarding the BMI Category and Health risk based on the calculated BMI.
 
+This application can be used as a standalone data processor from the Database or can be exposed externally as an API.
+
 ## BMI Ranges (kg/m<sup>2</sup>)
 
 -   18.4 and below
@@ -42,3 +44,96 @@ To run this application on your location system, the following installations are
 
 -   Either run `npm run dev` to start the server in Development mode
 -   Or run `npm run start` to start the server in Production mode
+
+---
+
+## API Endpoints
+
+URL: http://(localhost):(port)
+
+### GET Method
+
+> {URL}/patients
+
+**Description:** This request will fetch all the records from the Database
+
+**Authorization:** Basic Auth (Username & Password)
+
+### POST Method
+
+> {URL}/patients
+
+**Description:** This request will calculate the BMI, BMI Category and Health Risk in the Database for documents where BMI is null
+
+**Authorization:** Basic Auth (Username & Password)
+
+**Request Sample**
+
+<pre>
+{}
+</pre>
+
+**Response Sample**
+
+<pre>
+{
+    "status": 200,
+    "message": "6 Documents Modified"
+}
+</pre>
+
+> {URL}/calculate
+
+**Description:** This request will calculate the BMI, BMI Category and Health Risk
+
+**Authorization:** Basic Auth (Username & Password)
+
+**Request Sample**
+
+<pre>
+{
+    "Gender": "Male",
+    "HeightCm": 135,
+    "WeightKg": 97
+}
+</pre>
+
+**Response Sample**
+
+<pre>
+{
+    "HeightCm": 135,
+    "WeightKg": 97,
+    "BMI": 53.22,
+    "Health Risk": "Very High risk",
+    "BMI Category": "Very severely Obese"
+}
+</pre>
+
+> {URL}/insert
+
+**Description:** This request will calculate the BMI, BMI Category and Health Risk for the request data and insert into the database
+
+**Authorization:** Basic Auth (Username & Password)
+
+**Request Sample**
+
+<pre>
+{
+    "Gender": "Male",
+    "HeightCm": 135,
+    "WeightKg": 97
+}
+</pre>
+
+**Response Sample**
+
+<pre>
+{
+    "HeightCm": 135,
+    "WeightKg": 97,
+    "BMI": 53.22,
+    "Health Risk": "Very High risk",
+    "BMI Category": "Very severely Obese"
+}
+</pre>

@@ -26,7 +26,7 @@ async function setupDB() {
         if (err) throw err;
         coll.forEach(async (element) => {
             if (dbCol == element.name) {
-                console.log('Collection found!');
+                console.log('Collection already exists!');
                 collFlag = true;
                 await exiting();
             }
